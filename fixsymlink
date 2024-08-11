@@ -9,11 +9,12 @@ my $FindCommand = "find . -print > $InputFile";
 my %FileList = ();
 my $RepoDir = "/sbbs/data/dirs";
 my $RepoLength = length($RepoDir);
-my $JDownloadsFolderTree = "/var/www/html/jdownloads/MacOS\ Files";
+my $JDownloadsFolderTree = "/var/www/html/jdownloads";
 my $NumFiles = 0;
 my $LocateCommand = "/usr/bin/locate";
 my $LocateResultFile = "/tmp/locatefiles";
 my $AutoAccept = "n";
+my $VERSION = "1.0.0";
 
 chdir($RepoDir);
 system("$FindCommand");
@@ -110,9 +111,9 @@ sub locatefile
 	return $SawLine;
 }
 
+print "SBBS Symlink Fixer v$VERSION\n";
+print "============================\n";
 print "Missing Files found: $NumFiles\n";
-print "Classic Mac Symlink Fixer\n";
-print "=========================\n";
 
 foreach my $name (reverse sort keys %FileList)
 {
